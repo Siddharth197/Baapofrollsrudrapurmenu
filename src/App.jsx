@@ -13,6 +13,7 @@ const UPI_ID = "8226924223@ybl";
 export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [address, setAddress] = useState("");
 
   const cartTotalAmount = useMemo(() => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -65,8 +66,12 @@ export default function App() {
     message += `Delivery: ₹${deliveryFee}\n`;
     message += `Total Payable: ₹${finalPayable}\n`;
     message += `--------------------------\n`;
-    message += `Please share your Location/Address below:\n`;
-
+    message += `Delivery Address:\n${address}\n`;
+    message += `--------------------------\n`;
+    message += `Click here to pay via UPI:\n`;
+    message += `upi://pay?pa=${UPI_ID}&pn=Baap%20of%20Rolls&am=${finalPayable}&cu=INR\n`;
+    message += `\nOr pay to this UPI ID: ${UPI_ID}\n`;
+    
     return encodeURIComponent(message);
   };
 
@@ -276,10 +281,28 @@ export default function App() {
                     </div>
 
                     {/* Checkout Actions */}
-                    <div className="space-y-3 pb-safe">
-                      <button
+                    <div className="space-y-4 pb-safe">
+                      <div className="bg-white p-4 rounded-2xl border border-brand-slate/60 shadow-sm relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
+                        <label htmlFor="address" className="block text-brand-slate-500 font-bold text-xs uppercase tracking-widest mb-2 ml-1">Delivery Address *</label>
+                        <textarea
+                          id="address"
+                          rows="3"
+                          placeholder="Enter your complete address, landmark, etc."
+                          value={address}
+                          onChange={(e) => setAddress(e.target.value)}
+                          className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all resize-none font-medium placeholder:text-gray-400"
+                        ></textarea>
+                      </div>
+
+                      <button 
                         onClick={placeOrder}
-                        className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-4 rounded-2xl font-black flex items-center justify-center space-x-3 transition-transform hover:scale-[1.02] shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)]"
+                        disabled={!address.trim()}
+                        className={`w-full text-white py-4 rounded-2xl font-black flex items-center justify-center space-x-3 transition-all ${
+                          address.trim() 
+                            ? 'bg-[#25D366] hover:bg-[#128C7E] shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)] hover:scale-[1.02] cursor-pointer' 
+                            : 'bg-gray-300 cursor-not-allowed opacity-70'
+                        }`}
                       >
                         <MessageCircle size={24} fill="currentColor" className="text-white" />
                         <span className="text-[17px] tracking-wide">Order on WhatsApp</span>
