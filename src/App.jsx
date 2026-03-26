@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ShoppingCart, X, MessageCircle, Info, ArrowRight, Minus, Plus } from 'lucide-react';
+import { ShoppingCart, X, MessageCircle, Info, ArrowRight, Minus, Plus, MapPin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import MenuItem from './components/MenuItem';
@@ -13,7 +13,12 @@ const UPI_ID = "8226924223@ybl";
 export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [address, setAddress] = useState("");
+  const [manualAddress, setManualAddress] = useState("");
+  const [houseNo, setHouseNo] = useState("");
+  const [buildingName, setBuildingName] = useState("");
+  const [gpsLocation, setGpsLocation] = useState(null);
+  const [isLocating, setIsLocating] = useState(false);
+  const [locationError, setLocationError] = useState("");
 
   const cartTotalAmount = useMemo(() => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -53,6 +58,32 @@ export default function App() {
     }).filter(item => item.quantity > 0));
   };
 
+  const requestLocation = () => {
+    setIsLocating(true);
+    setLocationError("");
+    if (!navigator.geolocation) {
+      setLocationError("Geolocation is not supported by your browser");
+      setIsLocating(false);
+      return;
+    }
+
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setGpsLocation({
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        });
+        setIsLocating(false);
+      },
+      (error) => {
+        console.error("Error getting location:", error);
+        setLocationError("Could not get exact location. Please type it below.");
+        setIsLocating(false);
+      },
+      { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+    );
+  };
+
   const formatWhatsAppMessage = () => {
     let message = `🍔 New Order from Baap of Rolls!\n`;
     message += `--------------------------\n`;
@@ -66,7 +97,14 @@ export default function App() {
     message += `Delivery: ₹${deliveryFee}\n`;
     message += `Total Payable: ₹${finalPayable}\n`;
     message += `--------------------------\n`;
-    message += `Delivery Address:\n${address}\n`;
+    message += `Delivery Details:\n`;
+    if (gpsLocation) {
+      message += `House/Floor: ${houseNo}\n`;
+      message += `Building/Area: ${buildingName}\n`;
+      message += `Location Map: https://maps.google.com/?q=${gpsLocation.lat},${gpsLocation.lng}\n`;
+    } else {
+      message += `${manualAddress}\n`;
+    }
     message += `--------------------------\n`;
     message += `Click here to pay via UPI:\n`;
     message += `upi://pay?pa=${UPI_ID}&pn=Baap%20of%20Rolls&am=${finalPayable}&cu=INR\n`;
@@ -98,6 +136,8 @@ export default function App() {
     hidden: { opacity: 0, y: 20 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
+
+  const isAddressValid = gpsLocation ? (houseNo.trim() !== "" && buildingName.trim() !== "") : manualAddress.trim() !== "";
 
   return (
     <div className="min-h-screen relative bg-brand-light font-sans text-brand-black pb-4">
@@ -284,22 +324,65 @@ export default function App() {
                     <div className="space-y-4 pb-safe">
                       <div className="bg-white p-4 rounded-2xl border border-brand-slate/60 shadow-sm relative overflow-hidden">
                         <div className="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
-                        <label htmlFor="address" className="block text-brand-slate-500 font-bold text-xs uppercase tracking-widest mb-2 ml-1">Delivery Address *</label>
-                        <textarea
-                          id="address"
-                          rows="3"
-                          placeholder="Enter your complete address, landmark, etc."
-                          value={address}
-                          onChange={(e) => setAddress(e.target.value)}
-                          className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all resize-none font-medium placeholder:text-gray-400"
-                        ></textarea>
+                        <h3 className="block text-brand-slate-500 font-bold text-xs uppercase tracking-widest mb-3 ml-1">Delivery Address *</h3>
+                        
+                        {gpsLocation ? (
+                          <div className="space-y-3">
+                            <div className="bg-green-50 border border-green-200 text-green-700 px-3 py-2 rounded-xl text-[13px] font-bold flex items-center gap-2">
+                              <MapPin size={16} /> Location Captured!
+                            </div>
+                            <input
+                              type="text"
+                              placeholder="House / Flat / Floor No. *"
+                              value={houseNo}
+                              onChange={(e) => setHouseNo(e.target.value)}
+                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Building / Area / Landmark *"
+                              value={buildingName}
+                              onChange={(e) => setBuildingName(e.target.value)}
+                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
+                            />
+                            <button onClick={() => setGpsLocation(null)} className="text-[12px] text-brand-red font-bold underline px-1 hover:text-red-700">Clear Location & Type Manually</button>
+                          </div>
+                        ) : (
+                          <div className="space-y-3">
+                            <button 
+                              onClick={requestLocation}
+                              disabled={isLocating}
+                              className="w-full bg-brand-light border-2 border-brand-red text-brand-red hover:bg-brand-red hover:text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 transition-colors duration-300"
+                            >
+                              <MapPin size={18} />
+                              {isLocating ? "Fetching Location..." : "Share Current Location"}
+                            </button>
+                            
+                            {locationError && <p className="text-red-500 text-[11px] px-1 font-semibold">{locationError}</p>}
+                            
+                            <div className="flex items-center gap-2 my-2">
+                              <div className="h-px bg-brand-slate/60 flex-1"></div>
+                              <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">OR</span>
+                              <div className="h-px bg-brand-slate/60 flex-1"></div>
+                            </div>
+
+                            <textarea
+                              id="address"
+                              rows="3"
+                              placeholder="Type your complete address manually..."
+                              value={manualAddress}
+                              onChange={(e) => setManualAddress(e.target.value)}
+                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all resize-none font-medium placeholder:text-gray-400"
+                            ></textarea>
+                          </div>
+                        )}
                       </div>
 
                       <button 
                         onClick={placeOrder}
-                        disabled={!address.trim()}
+                        disabled={!isAddressValid}
                         className={`w-full text-white py-4 rounded-2xl font-black flex items-center justify-center space-x-3 transition-all ${
-                          address.trim() 
+                          isAddressValid
                             ? 'bg-[#25D366] hover:bg-[#128C7E] shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)] hover:scale-[1.02] cursor-pointer' 
                             : 'bg-gray-300 cursor-not-allowed opacity-70'
                         }`}
