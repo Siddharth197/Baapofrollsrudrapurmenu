@@ -1,0 +1,930 @@
+{
+  "categories": [
+    {
+      "id": "classic-veg-rolls",
+      "name": "Classic Veg Rolls",
+      "items": [
+        {
+          "id": "ar-0",
+          "name": "Aaloo Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 49
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 69
+            }
+          ],
+          "image": "/images/aaloo-roll.jpg"
+        },
+        {
+          "id": "vr-1",
+          "name": "Veggie Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 79
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 109
+            }
+          ],
+          "image": "/images/veggie-roll.jpg"
+        },
+        {
+          "id": "vkr-2",
+          "name": "Veggie Korma Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 99
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 129
+            }
+          ],
+          "image": "/images/veggie-korma-roll.jpg"
+        },
+        {
+          "id": "mcr-3",
+          "name": "Masala Corn Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 99
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 129
+            }
+          ],
+          "image": "/images/masala-corn-roll.jpg"
+        },
+        {
+          "id": "jcr-4",
+          "name": "Jalapeno Corn Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 109
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 139
+            }
+          ],
+          "image": "/images/jalapeno-corn-roll.jpg"
+        },
+        {
+          "id": "hbkr-5",
+          "name": "Hara Bhara Kebab Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 159
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 189
+            }
+          ],
+          "image": "/images/hara-bhara-kebab-roll.jpg"
+        },
+        {
+          "id": "vskr-6",
+          "name": "Veg Seekh Kebab Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 179
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 209
+            }
+          ],
+          "image": "/images/veg-seekh-kebab-roll.jpg"
+        }
+      ]
+    },
+    {
+      "id": "soya-veg-rolls",
+      "name": "Soya Veg Rolls",
+      "items": [
+        {
+          "id": "mscr-0",
+          "name": "Masala Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 139
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 169
+            }
+          ],
+          "image": "/images/masala-soya-chaap-roll.jpg"
+        },
+        {
+          "id": "tscr-1",
+          "name": "Tandoori Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 149
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 179
+            }
+          ],
+          "image": "/images/tandoori-soya-chaap-roll.jpg"
+        },
+        {
+          "id": "ascr-2",
+          "name": "Achari Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 149
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 179
+            }
+          ],
+          "image": "/images/achari-soya-chaap-roll.jpg"
+        },
+        {
+          "id": "kscr-3",
+          "name": "Korma Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 149
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 179
+            }
+          ],
+          "image": "/images/korma-soya-chaap-roll.jpg"
+        },
+        {
+          "id": "mscr-4",
+          "name": "Malai Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 149
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 179
+            }
+          ],
+          "image": "/images/malai-soya-chaap-roll.jpg"
+        },
+        {
+          "id": "mscr-5",
+          "name": "Makhani Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 149
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 179
+            }
+          ],
+          "image": "/images/makhani-soya-chaap-roll.jpg"
+        },
+        {
+          "id": "bscr-6",
+          "name": "Butter Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 149
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 179
+            }
+          ],
+          "image": "/images/butter-soya-chaap-roll.jpg"
+        },
+        {
+          "id": "ascr-7",
+          "name": "Afghani Soya Chaap Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 149
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 179
+            }
+          ],
+          "image": "/images/afghani-soya-chaap-roll.jpg"
+        }
+      ]
+    },
+    {
+      "id": "paneer-veg-rolls",
+      "name": "Paneer Veg Rolls",
+      "items": [
+        {
+          "id": "pr-0",
+          "name": "Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 169
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 209
+            }
+          ],
+          "image": "/images/paneer-roll.jpg"
+        },
+        {
+          "id": "pbr-1",
+          "name": "Paneer Bhurji Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 179
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 219
+            }
+          ],
+          "image": "/images/paneer-bhurji-roll.jpg"
+        },
+        {
+          "id": "tpr-2",
+          "name": "Tandoori Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/tandoori-paneer-roll.jpg"
+        },
+        {
+          "id": "mpr-3",
+          "name": "Malai Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/malai-paneer-roll.jpg"
+        },
+        {
+          "id": "apr-4",
+          "name": "Achari Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/achari-paneer-roll.jpg"
+        },
+        {
+          "id": "mpr-5",
+          "name": "Makhani Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/makhani-paneer-roll.jpg"
+        },
+        {
+          "id": "apr-6",
+          "name": "Afghani Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/afghani-paneer-roll.jpg"
+        },
+        {
+          "id": "kpr-7",
+          "name": "Korma Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/korma-paneer-roll.jpg"
+        },
+        {
+          "id": "bpr-8",
+          "name": "Butter Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/butter-paneer-roll.jpg"
+        },
+        {
+          "id": "spr-9",
+          "name": "Schezwan Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/schezwan-paneer-roll.jpg"
+        },
+        {
+          "id": "psr-10",
+          "name": "Paneer Shawarma Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/paneer-shawarma-roll.jpg"
+        },
+        {
+          "id": "cgpr-11",
+          "name": "Chilly Garlic Paneer Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 199
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 239
+            }
+          ],
+          "image": "/images/chilly-garlic-paneer-roll.jpg"
+        }
+      ]
+    },
+    {
+      "id": "non-veg-rolls",
+      "name": "Non-Veg Rolls",
+      "items": [
+        {
+          "id": "ccr-0",
+          "name": "Classic Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 169
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 209
+            }
+          ],
+          "image": "/images/classic-chicken-roll.jpg"
+        },
+        {
+          "id": "csr-1",
+          "name": "Chicken Shawarma Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 179
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 219
+            }
+          ],
+          "image": "/images/chicken-shawarma-roll.jpg"
+        },
+        {
+          "id": "bcr-2",
+          "name": "Bhuna Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 179
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 219
+            }
+          ],
+          "image": "/images/bhuna-chicken-roll.jpg"
+        },
+        {
+          "id": "ctr-3",
+          "name": "Chicken Tandoori Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/chicken-tandoori-roll.jpg"
+        },
+        {
+          "id": "ckr-4",
+          "name": "Chicken Korma Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/chicken-korma-roll.jpg"
+        },
+        {
+          "id": "mcr-5",
+          "name": "Malai Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/malai-chicken-roll.jpg"
+        },
+        {
+          "id": "acr-6",
+          "name": "Achari Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/achari-chicken-roll.jpg"
+        },
+        {
+          "id": "mcr-7",
+          "name": "Makhani Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/makhani-chicken-roll.jpg"
+        },
+        {
+          "id": "acr-8",
+          "name": "Afghani Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 199
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 239
+            }
+          ],
+          "image": "/images/afghani-chicken-roll.jpg"
+        },
+        {
+          "id": "bcr-9",
+          "name": "Butter Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 199
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 239
+            }
+          ],
+          "image": "/images/butter-chicken-roll.jpg"
+        },
+        {
+          "id": "scr-10",
+          "name": "Schezwan Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/schezwan-chicken-roll.jpg"
+        },
+        {
+          "id": "cgcr-11",
+          "name": "Chilli Garlic Chicken Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 199
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 239
+            }
+          ],
+          "image": "/images/chilli-garlic-chicken-roll.jpg"
+        },
+        {
+          "id": "csr-12",
+          "name": "Chicken Seekh Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 159
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 199
+            }
+          ],
+          "image": "/images/chicken-seekh-roll.jpg"
+        },
+        {
+          "id": "msr-13",
+          "name": "Mutton Seekh Roll",
+          "variations": [
+            {
+              "name": "Beta (Single)",
+              "price": 189
+            },
+            {
+              "name": "Baap (Double)",
+              "price": 229
+            }
+          ],
+          "image": "/images/mutton-seekh-roll.jpg"
+        }
+      ]
+    },
+    {
+      "id": "special-shawarma-rolls",
+      "name": "Special Shawarma Rolls",
+      "items": [
+        {
+          "id": "ssr-1",
+          "name": "Doner Chicken Shawarma",
+          "price": 149,
+          "description": "NEW!!",
+          "image": "/images/doner-chicken-shawarma.jpg"
+        },
+        {
+          "id": "ssr-2",
+          "name": "Doner Paneer Shawarma",
+          "price": 129,
+          "description": "NEW!!",
+          "image": "/images/doner-paneer-shawarma.jpg"
+        }
+      ]
+    },
+    {
+      "id": "egg-rolls",
+      "name": "Egg Rolls",
+      "items": [
+        {
+          "id": "er-1",
+          "name": "Egg Roll",
+          "variations": [
+            {
+              "name": "Beta (Double Egg)",
+              "price": 69
+            },
+            {
+              "name": "Baap (Triple Egg)",
+              "price": 89
+            }
+          ],
+          "image": "/images/egg-roll.jpg"
+        },
+        {
+          "id": "er-2",
+          "name": "Egg Makhani Roll",
+          "variations": [
+            {
+              "name": "Beta (Double Egg)",
+              "price": 89
+            },
+            {
+              "name": "Baap (Triple Egg)",
+              "price": 109
+            }
+          ],
+          "image": "/images/egg-makhani-roll.jpg"
+        }
+      ]
+    },
+    {
+      "id": "momos",
+      "name": "Momos (Classic Steam)",
+      "items": [
+        {
+          "id": "m-1",
+          "name": "Veg Momo (6 pcs)",
+          "price": 79,
+          "description": "Classic Steam",
+          "image": "/images/veg-momo-6-pcs.jpg"
+        },
+        {
+          "id": "m-2",
+          "name": "Soya Veg Momo (6 pcs)",
+          "price": 89,
+          "description": "Classic Steam",
+          "image": "/images/soya-veg-momo-6-pcs.jpg"
+        },
+        {
+          "id": "m-3",
+          "name": "Paneer Momo (6 pcs)",
+          "price": 119,
+          "description": "Classic Steam",
+          "image": "/images/paneer-momo-6-pcs.jpg"
+        },
+        {
+          "id": "m-4",
+          "name": "Chicken Momo (6 pcs)",
+          "price": 119,
+          "description": "Classic Steam",
+          "image": "/images/chicken-momo-6-pcs.jpg"
+        }
+      ]
+    },
+    {
+      "id": "fries",
+      "name": "Fries",
+      "items": [
+        {
+          "id": "f-1",
+          "name": "Classic Fries",
+          "price": 89,
+          "description": "",
+          "image": "/images/classic-fries.jpg"
+        },
+        {
+          "id": "f-2",
+          "name": "Peri Peri Fries",
+          "price": 99,
+          "description": "",
+          "image": "/images/peri-peri-fries.jpg"
+        },
+        {
+          "id": "f-3",
+          "name": "Herby Potato Wedges",
+          "price": 99,
+          "description": "",
+          "image": "/images/herby-potato-wedges.jpg"
+        }
+      ]
+    },
+    {
+      "id": "biryani",
+      "name": "Biryani",
+      "items": [
+        {
+          "id": "b-1",
+          "name": "Veg Biryani (450gm)",
+          "price": 239,
+          "description": "",
+          "image": "/images/veg-biryani-450gm.jpg"
+        },
+        {
+          "id": "b-2",
+          "name": "Chaap Biryani (450gm)",
+          "price": 249,
+          "description": "",
+          "image": "/images/chaap-biryani-450gm.jpg"
+        },
+        {
+          "id": "b-3",
+          "name": "Chicken Biryani (480gm)",
+          "price": 259,
+          "description": "",
+          "image": "/images/chicken-biryani-480gm.jpg"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "name": "Desserts",
+      "items": [
+        {
+          "id": "d-1",
+          "name": "Choco Lava Cake",
+          "price": 99,
+          "description": "",
+          "image": "/images/choco-lava-cake.jpg"
+        },
+        {
+          "id": "d-2",
+          "name": "Classic Nut Brownie",
+          "price": 99,
+          "description": "",
+          "image": "/images/classic-nut-brownie.jpg"
+        }
+      ]
+    },
+    {
+      "id": "beverages",
+      "name": "Beverages",
+      "items": [
+        {
+          "id": "bev-1",
+          "name": "Aam Panna",
+          "price": 79,
+          "description": "",
+          "image": "/images/aam-panna.jpg"
+        },
+        {
+          "id": "bev-2",
+          "name": "Masala Lemonade",
+          "price": 79,
+          "description": "",
+          "image": "/images/masala-lemonade.jpg"
+        },
+        {
+          "id": "bev-3",
+          "name": "Peach Iced Tea",
+          "price": 79,
+          "description": "",
+          "image": "/images/peach-iced-tea.jpg"
+        },
+        {
+          "id": "bev-4",
+          "name": "Lemon Iced Tea",
+          "price": 79,
+          "description": "",
+          "image": "/images/lemon-iced-tea.jpg"
+        },
+        {
+          "id": "bev-5",
+          "name": "Pulse Candy Chatkara",
+          "price": 79,
+          "description": "",
+          "image": "/images/pulse-candy-chatkara.jpg"
+        },
+        {
+          "id": "bev-6",
+          "name": "Spicy Chilli Guava",
+          "price": 79,
+          "description": "",
+          "image": "/images/spicy-chilli-guava.jpg"
+        },
+        {
+          "id": "bev-7",
+          "name": "Classic Cold Coffee",
+          "price": 99,
+          "description": "",
+          "image": "/images/classic-cold-coffee.jpg"
+        },
+        {
+          "id": "bev-8",
+          "name": "Mocha Cold Coffee",
+          "price": 109,
+          "description": "",
+          "image": "/images/mocha-cold-coffee.jpg"
+        },
+        {
+          "id": "bev-9",
+          "name": "Hazelnut Cold Coffee",
+          "price": 109,
+          "description": "",
+          "image": "/images/hazelnut-cold-coffee.jpg"
+        }
+      ]
+    },
+    {
+      "id": "add-ons",
+      "name": "Add-Ons & Dressings",
+      "items": [
+        {
+          "id": "add-1",
+          "name": "Extra Peri Peri Masala",
+          "price": 10,
+          "description": "Add-on"
+        },
+        {
+          "id": "add-2",
+          "name": "Amul Butter",
+          "price": 10,
+          "description": "Add-on"
+        },
+        {
+          "id": "add-3",
+          "name": "Mint Chutney",
+          "price": 10,
+          "description": "Add-on"
+        },
+        {
+          "id": "add-4",
+          "name": "Wheat Paratha",
+          "price": 29,
+          "description": "Add-on"
+        },
+        {
+          "id": "add-5",
+          "name": "Extra Egg",
+          "price": 20,
+          "description": "Add-on"
+        },
+        {
+          "id": "add-6",
+          "name": "Tandoori Delight Dressing",
+          "price": 19,
+          "description": "Dressing"
+        },
+        {
+          "id": "add-7",
+          "name": "Mayonnaise",
+          "price": 19,
+          "description": "Dressing"
+        },
+        {
+          "id": "add-8",
+          "name": "Jalapeno Mayonnaise",
+          "price": 19,
+          "description": "Dressing"
+        }
+      ]
+    }
+  ]
+}
