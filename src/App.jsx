@@ -30,7 +30,6 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [manualAddress, setManualAddress] = useState("");
   const [houseNo, setHouseNo] = useState("");
   const [buildingName, setBuildingName] = useState("");
   const [gpsLocation, setGpsLocation] = useState(null);
@@ -127,12 +126,10 @@ export default function App() {
     message += `Total Payable: ₹${finalPayable}\n`;
     message += `--------------------------\n`;
     message += `Delivery Details:\n`;
+    message += `House/Floor: ${houseNo}\n`;
+    message += `Complete Address: ${buildingName}\n`;
     if (gpsLocation) {
-      message += `House/Floor: ${houseNo}\n`;
-      message += `Building/Area: ${buildingName}\n`;
       message += `Location Map: https://maps.google.com/?q=${gpsLocation.lat},${gpsLocation.lng}\n`;
-    } else {
-      message += `${manualAddress}\n`;
     }
     message += `--------------------------\n`;
     message += `Payment Status: ✅ PAID VIA UPI (Unverified)\n`;
@@ -165,7 +162,7 @@ export default function App() {
     visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
   };
 
-  const isAddressValid = gpsLocation ? (houseNo.trim() !== "" && buildingName.trim() !== "") : manualAddress.trim() !== "";
+  const isAddressValid = houseNo.trim() !== "" && buildingName.trim() !== "";
 
   return (
     <div className="min-h-screen relative bg-brand-light font-sans text-brand-black pb-4">
@@ -355,60 +352,56 @@ export default function App() {
                           <div className="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
                           <h3 className="block text-brand-slate-500 font-bold text-xs uppercase tracking-widest mb-3 ml-1">Delivery Address *</h3>
                           
-                          {gpsLocation ? (
-                            <div className="space-y-3">
-                              <div className="bg-green-50 border border-green-200 text-green-700 px-3 py-2 rounded-xl text-[13px] font-bold flex items-center gap-2">
-                                <MapPin size={16} /> Location Captured!
+                          <div className="space-y-3">
+                            {gpsLocation ? (
+                              <div className="bg-green-50 border border-green-200 text-green-700 px-3 py-2.5 rounded-xl text-[13px] font-bold flex flex-col gap-1.5 shadow-sm">
+                                <div className="flex items-center gap-2">
+                                  <MapPin size={16} /> Location Captured!
+                                </div>
+                                <button onClick={() => setGpsLocation(null)} className="text-[11px] text-brand-red font-bold underline self-start hover:text-red-700">
+                                  Clear GPS & Use Manual Address Only
+                                </button>
                               </div>
-                              <input
-                                type="text"
-                                placeholder="House / Flat / Floor No. *"
-                                value={houseNo}
-                                onChange={(e) => setHouseNo(e.target.value)}
-                                className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
-                              />
-                              <input
-                                type="text"
-                                placeholder="Building / Area / Landmark *"
-                                value={buildingName}
-                                onChange={(e) => setBuildingName(e.target.value)}
-                                className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
-                              />
-                              <button onClick={() => setGpsLocation(null)} className="text-[12px] text-brand-red font-bold underline px-1 hover:text-red-700">Clear Location & Type Manually</button>
-                            </div>
-                          ) : (
-                            <div className="space-y-3">
-                              <button 
-                                onClick={requestLocation}
-                                disabled={isLocating}
-                                className="w-full bg-brand-light border-2 border-brand-red text-brand-red hover:bg-brand-red hover:text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 transition-colors duration-300"
-                              >
-                                <MapPin size={18} />
-                                {isLocating ? "Fetching Location..." : "Share Current Location"}
-                              </button>
-                              
-                              {locationError && <p className="text-red-500 text-[11px] px-1 font-semibold">{locationError}</p>}
-                              
-                              <div className="flex items-center gap-2 my-2">
-                                <div className="h-px bg-brand-slate/60 flex-1"></div>
-                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">OR</span>
-                                <div className="h-px bg-brand-slate/60 flex-1"></div>
-                              </div>
-                              
-                              <p className="text-[11px] text-brand-red font-bold uppercase tracking-widest text-center mt-1 mb-1 bg-red-50 py-1 rounded-md border border-red-100">
-                                Note: We only deliver up to 15km
-                              </p>
+                            ) : (
+                              <>
+                                <button 
+                                  onClick={requestLocation}
+                                  disabled={isLocating}
+                                  className="w-full bg-brand-light border-2 border-brand-red text-brand-red hover:bg-brand-red hover:text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 transition-colors duration-300"
+                                >
+                                  <MapPin size={18} />
+                                  {isLocating ? "Fetching Location..." : "Share Current Location"}
+                                </button>
+                                
+                                {locationError && <p className="text-red-500 text-[11px] px-1 font-semibold">{locationError}</p>}
+                                
+                                <div className="flex items-center gap-2 my-2">
+                                  <div className="h-px bg-brand-slate/60 flex-1"></div>
+                                  <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">OR ENTER MANUALLY</span>
+                                  <div className="h-px bg-brand-slate/60 flex-1"></div>
+                                </div>
+                                
+                                <p className="text-[11px] text-brand-red font-bold uppercase tracking-widest text-center mt-1 mb-2 bg-red-50 py-1.5 rounded-md border border-red-100">
+                                  Note: We only deliver up to 15km
+                                </p>
+                              </>
+                            )}
 
-                              <textarea
-                                id="address"
-                                rows="3"
-                                placeholder="Type your complete address manually..."
-                                value={manualAddress}
-                                onChange={(e) => setManualAddress(e.target.value)}
-                                className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all resize-none font-medium placeholder:text-gray-400"
-                              ></textarea>
-                            </div>
-                          )}
+                            <input
+                              type="text"
+                              placeholder="House / Flat / Floor No. *"
+                              value={houseNo}
+                              onChange={(e) => setHouseNo(e.target.value)}
+                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
+                            />
+                            <input
+                              type="text"
+                              placeholder="Complete Address / Area / Landmark *"
+                              value={buildingName}
+                              onChange={(e) => setBuildingName(e.target.value)}
+                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
+                            />
+                          </div>
                         </div>
 
                         <button 
