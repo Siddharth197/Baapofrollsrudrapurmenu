@@ -36,6 +36,7 @@ export default function App() {
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState("");
   const [checkoutStep, setCheckoutStep] = useState(1);
+  const [hasPaid, setHasPaid] = useState(false);
 
   const cartTotalAmount = useMemo(() => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -145,6 +146,8 @@ export default function App() {
 
   const goToUPI = () => {
     window.location.href = `upi://pay?pa=${UPI_ID}&pn=Baap%20of%20Rolls&am=${finalPayable}&cu=INR`;
+    // Mark as paid after UPI app is opened
+    setTimeout(() => setHasPaid(true), 2000);
   };
 
   const containerVariants = {
@@ -242,7 +245,7 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => { setIsCartOpen(false); setCheckoutStep(1); }}
+              onClick={() => { setIsCartOpen(false); setCheckoutStep(1); setHasPaid(false); }}
               className="absolute inset-0 bg-brand-black/60 backdrop-blur-md pointer-events-auto"
             />
 
@@ -422,38 +425,68 @@ export default function App() {
                 ) : (
                   /* Step 2: Payment Screen */
                   <div className="flex flex-col h-full animate-in fade-in slide-in-from-bottom-4 duration-300">
-                    <button onClick={() => setCheckoutStep(1)} className="flex items-center text-brand-slate-500 font-bold mb-6 hover:text-brand-black transition-colors w-max">
+                    <button onClick={() => { setCheckoutStep(1); setHasPaid(false); }} className="flex items-center text-brand-slate-500 font-bold mb-6 hover:text-brand-black transition-colors w-max">
                       <ArrowLeft size={18} className="mr-1" /> Back to Cart
                     </button>
                     
                     <div className="bg-white p-6 rounded-3xl border border-brand-slate/60 shadow-sm mb-6 text-center">
-                      <div className="w-16 h-16 bg-brand-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-yellow">
+                      <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 transition-all duration-500 ${hasPaid ? 'bg-green-100 text-green-600' : 'bg-brand-yellow/20 text-brand-yellow'}`}>
                         <CreditCard size={32} />
                       </div>
                       <h3 className="font-black text-4xl text-brand-black mb-1">₹{finalPayable}</h3>
-                      <p className="text-gray-500 font-medium text-[14px] mb-8">Complete your payment to place the order.</p>
+                      <p className="text-gray-500 font-medium text-[14px] mb-6">Pay using UPI below, then confirm your order.</p>
+
+                      {/* Step indicator */}
+                      <div className="flex items-center gap-3 mb-6">
+                        <div className={`flex items-center gap-2 flex-1 py-2 px-3 rounded-xl text-[12px] font-bold border-2 transition-all ${hasPaid ? 'bg-green-50 border-green-300 text-green-700' : 'bg-brand-yellow/10 border-brand-yellow text-brand-black'}`}>
+                          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-black shrink-0 ${hasPaid ? 'bg-green-500 text-white' : 'bg-brand-yellow text-brand-black'}`}>1</span>
+                          {hasPaid ? '✓ Payment Initiated' : 'Pay First'}
+                        </div>
+                        <div className="w-4 h-0.5 bg-brand-slate shrink-0"></div>
+                        <div className={`flex items-center gap-2 flex-1 py-2 px-3 rounded-xl text-[12px] font-bold border-2 transition-all ${hasPaid ? 'bg-brand-black/5 border-brand-black/20 text-brand-black' : 'bg-gray-50 border-gray-200 text-gray-400'}`}>
+                          <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[11px] font-black shrink-0 ${hasPaid ? 'bg-brand-black text-white' : 'bg-gray-300 text-gray-500'}`}>2</span>
+                          Send Order
+                        </div>
+                      </div>
                       
                       <button 
                         onClick={goToUPI}
-                        className="w-full bg-brand-light border-2 border-brand-slate text-brand-black hover:bg-white py-4 rounded-2xl font-black flex items-center justify-center space-x-2 transition-colors mb-6 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
+                        className={`w-full py-4 rounded-2xl font-black flex items-center justify-center space-x-2 mb-4 transition-all shadow-sm hover:scale-[1.02] active:scale-[0.98] ${hasPaid ? 'bg-green-50 border-2 border-green-300 text-green-700' : 'bg-brand-light border-2 border-brand-red text-brand-black hover:bg-brand-red hover:text-white'}`}
                       >
                         <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" className="h-[22px]" />
-                        <span className="text-[16px] tracking-wide ml-1">Pay via UPI App</span>
+                        <span className="text-[16px] tracking-wide ml-1">{hasPaid ? '✓ Payment Opened' : 'Pay via UPI App'}</span>
                       </button>
 
                       <div className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-3">OR COPY UPI ID</div>
-                      <div className="bg-brand-slate/30 p-3.5 rounded-xl font-mono text-brand-black font-bold flex justify-center items-center gap-2 text-[15px]">
-                        {UPI_ID}
+                      <div 
+                        className="bg-brand-slate/30 p-3.5 rounded-xl font-mono text-brand-black font-bold flex justify-between items-center gap-2 text-[15px] cursor-pointer hover:bg-brand-slate/50 active:scale-[0.98] transition-all"
+                        onClick={() => { navigator.clipboard?.writeText(UPI_ID); setHasPaid(true); }}
+                        title="Tap to copy"
+                      >
+                        <span>{UPI_ID}</span>
+                        <span className="text-[11px] font-bold text-gray-400 uppercase tracking-wider">Copy</span>
                       </div>
                     </div>
 
                     <div className="mt-auto pt-2 space-y-3">
-                      <p className="text-center text-[13px] text-gray-500 font-medium px-4 mb-4 leading-relaxed">
-                        After paying, click below to confirm your payment with us on WhatsApp.
-                      </p>
+                      {!hasPaid && (
+                        <p className="text-center text-[13px] text-brand-red font-bold px-4 bg-red-50 py-3 rounded-xl border border-red-100">
+                          ⚠ Please complete your UPI payment first before sending the order.
+                        </p>
+                      )}
+                      {hasPaid && (
+                        <p className="text-center text-[13px] text-green-700 font-bold px-4 bg-green-50 py-3 rounded-xl border border-green-200">
+                          ✅ Payment initiated! Now send your order details.
+                        </p>
+                      )}
                       <button 
                         onClick={placeOrder}
-                        className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-4.5 rounded-2xl font-black flex items-center justify-center space-x-3 transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)]"
+                        disabled={!hasPaid}
+                        className={`w-full text-white py-4 rounded-2xl font-black flex items-center justify-center space-x-3 transition-all ${
+                          hasPaid
+                            ? 'bg-[#25D366] hover:bg-[#128C7E] hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)] cursor-pointer'
+                            : 'bg-gray-300 cursor-not-allowed opacity-60'
+                        }`}
                       >
                         <MessageCircle size={26} fill="currentColor" className="text-white" />
                         <span className="text-[18px] tracking-wide">I Have Paid - Send Order</span>
