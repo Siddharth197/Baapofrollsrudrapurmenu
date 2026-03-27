@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
 const menuPath = 'C:/Users/siddh/OneDrive/Desktop/Rudrapur menu/src/data/menu.json';
 const data = JSON.parse(fs.readFileSync(menuPath, 'utf8'));
@@ -8,8 +8,8 @@ const data = JSON.parse(fs.readFileSync(menuPath, 'utf8'));
 function slugify(text) {
   return text.toString().toLowerCase()
     .replace(/\s+/g, '-')           // Replace spaces with -
-    .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-    .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+    .replace(/[^\w-]+/g, '')       // Remove all non-word chars
+    .replace(/--+/g, '-')         // Replace multiple - with single -
     .replace(/^-+/, '')             // Trim - from start of text
     .replace(/-+$/, '');            // Trim - from end of text
 }

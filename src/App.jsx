@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { ShoppingCart, X, MessageCircle, Info, ArrowRight, Minus, Plus, MapPin } from 'lucide-react';
+import { ShoppingCart, X, MessageCircle, Info, ArrowRight, Minus, Plus, MapPin, CreditCard, ArrowLeft } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Header from './components/Header';
 import MenuItem from './components/MenuItem';
@@ -10,6 +10,23 @@ const WA_PHONE_NUMBER = "919205159696";
 // UPI ID Placeholder
 const UPI_ID = "8226924223@ybl";
 
+// Delivery Radius Constants
+const REST_LAT = 28.976732;
+const REST_LNG = 79.397632;
+const MAX_RADIUS_KM = 15;
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of the earth in km
+  const dLat = (lat2 - lat1) * (Math.PI / 180);
+  const dLon = (lon2 - lon1) * (Math.PI / 180);
+  const a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2); 
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  return R * c; // Distance in km
+}
+
 export default function App() {
   const [cart, setCart] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -19,6 +36,7 @@ export default function App() {
   const [gpsLocation, setGpsLocation] = useState(null);
   const [isLocating, setIsLocating] = useState(false);
   const [locationError, setLocationError] = useState("");
+  const [checkoutStep, setCheckoutStep] = useState(1);
 
   const cartTotalAmount = useMemo(() => {
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
@@ -69,9 +87,20 @@ export default function App() {
 
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+        
+        const distance = calculateDistance(userLat, userLng, REST_LAT, REST_LNG);
+        
+        if (distance > MAX_RADIUS_KM) {
+          setLocationError(`Sorry, you are ${distance.toFixed(1)} km away. We only deliver within a ${MAX_RADIUS_KM} km radius.`);
+          setIsLocating(false);
+          return;
+        }
+
         setGpsLocation({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
+          lat: userLat,
+          lng: userLng
         });
         setIsLocating(false);
       },
@@ -217,7 +246,7 @@ export default function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsCartOpen(false)}
+              onClick={() => { setIsCartOpen(false); setCheckoutStep(1); }}
               className="absolute inset-0 bg-brand-black/60 backdrop-blur-md pointer-events-auto"
             />
 
@@ -236,10 +265,10 @@ export default function App() {
               {/* Header */}
               <div className="flex justify-between items-center px-6 py-4 border-b border-brand-slate bg-brand-light/80 backdrop-blur-md sticky top-0 z-10 shrink-0">
                 <h2 className="text-2xl font-black flex items-center gap-2 tracking-tight">
-                  Your Order
+                  {checkoutStep === 1 ? "Your Order" : "Payment"}
                 </h2>
                 <button
-                  onClick={() => setIsCartOpen(false)}
+                  onClick={() => { setIsCartOpen(false); setCheckoutStep(1); }}
                   className="p-2 bg-brand-slate/50 hover:bg-brand-slate text-brand-black rounded-full transition-colors"
                 >
                   <X size={20} strokeWidth={3} />
@@ -248,158 +277,197 @@ export default function App() {
 
               {/* Content */}
               <div className="overflow-y-auto px-6 py-4 pb-8">
-                {cart.length === 0 ? (
-                  <div className="text-center py-12">
-                    <div className="bg-brand-slate/30 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-5 text-gray-400">
-                      <ShoppingCart size={48} strokeWidth={1.5} />
+                {checkoutStep === 1 ? (
+                  cart.length === 0 ? (
+                    <div className="text-center py-12">
+                      <div className="bg-brand-slate/30 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-5 text-gray-400">
+                        <ShoppingCart size={48} strokeWidth={1.5} />
+                      </div>
+                      <p className="text-gray-500 text-lg font-medium">Your cart is missing some flavor!</p>
+                      <button
+                        onClick={() => { setIsCartOpen(false); setCheckoutStep(1); }}
+                        className="mt-6 text-white bg-brand-red font-bold px-8 py-3 rounded-xl shadow-lg shadow-brand-red/20 active:scale-95 transition-all"
+                      >
+                        Browse Menu
+                      </button>
                     </div>
-                    <p className="text-gray-500 text-lg font-medium">Your cart is missing some flavor!</p>
-                    <button
-                      onClick={() => setIsCartOpen(false)}
-                      className="mt-6 text-white bg-brand-red font-bold px-8 py-3 rounded-xl shadow-lg shadow-brand-red/20 active:scale-95 transition-all"
-                    >
-                      Browse Menu
-                    </button>
-                  </div>
-                ) : (
-                  <>
-                    <div className="space-y-4 mb-8">
-                      {cart.map((item) => (
-                        <div key={item.cartId} className="flex justify-between items-center bg-white p-4 rounded-2xl border border-brand-slate/60 shadow-sm">
-                          <div className="flex-1 pr-3">
-                            <h4 className="font-bold text-[16px] leading-tight text-brand-black mb-0.5">{item.name}</h4>
-                            {item.variantName && (
-                              <div className="text-[12px] text-gray-400 font-bold mb-1 uppercase tracking-wider">{item.variantName}</div>
+                  ) : (
+                    <>
+                      <div className="space-y-4 mb-8">
+                        {cart.map((item) => (
+                          <div key={item.cartId} className="flex justify-between items-center bg-white p-4 rounded-2xl border border-brand-slate/60 shadow-sm">
+                            <div className="flex-1 pr-3">
+                              <h4 className="font-bold text-[16px] leading-tight text-brand-black mb-0.5">{item.name}</h4>
+                              {item.variantName && (
+                                <div className="text-[12px] text-gray-400 font-bold mb-1 uppercase tracking-wider">{item.variantName}</div>
+                              )}
+                              <span className="text-brand-red font-black text-[15px]">₹{item.price}</span>
+                            </div>
+                            <div className="flex items-center bg-brand-light rounded-xl border border-brand-slate overflow-hidden shrink-0 shadow-sm h-10">
+                              <button onClick={() => decrementQuantity(item.cartId)} className="w-9 h-full flex items-center justify-center text-brand-black hover:bg-brand-slate/50 active:bg-brand-slate font-bold transition-colors">
+                                <Minus size={16} strokeWidth={3} />
+                              </button>
+                              <span className="w-6 text-center font-black text-brand-black text-[15px]">{item.quantity}</span>
+                              <button onClick={() => incrementQuantity(item.cartId)} className="w-9 h-full flex items-center justify-center text-brand-black hover:bg-brand-slate/50 active:bg-brand-slate font-bold transition-colors">
+                                <Plus size={16} strokeWidth={3} />
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Bill Summary */}
+                      <div className="bg-white p-6 rounded-3xl border border-brand-slate/60 shadow-sm mb-6 relative overflow-hidden">
+                        <div className="absolute top-0 left-0 w-full h-1 bg-brand-red"></div>
+                        <h3 className="font-black text-brand-black mb-5 tracking-widest text-xs uppercase text-brand-slate-500">Bill Summary</h3>
+
+                        <div className="flex justify-between text-gray-600 mb-3 font-medium text-[15px]">
+                          <span>Subtotal</span>
+                          <span className="font-bold text-brand-black">₹{cartTotalAmount}</span>
+                        </div>
+                        <div className="flex justify-between text-gray-600 mb-4 font-medium text-[15px]">
+                          <span className="flex items-center gap-2">
+                            Delivery Fee
+                            {deliveryFee === 0 ? (
+                              <span className="bg-green-100 text-green-700 text-[10px] px-2.5 py-1 rounded-full uppercase font-bold tracking-wide">Free</span>
+                            ) : (
+                              <span className="text-[11px] text-gray-500 bg-brand-slate/50 px-2 py-1 rounded-lg font-semibold">(Under ₹500)</span>
                             )}
-                            <span className="text-brand-red font-black text-[15px]">₹{item.price}</span>
-                          </div>
-                          <div className="flex items-center bg-brand-light rounded-xl border border-brand-slate overflow-hidden shrink-0 shadow-sm h-10">
-                            <button onClick={() => decrementQuantity(item.cartId)} className="w-9 h-full flex items-center justify-center text-brand-black hover:bg-brand-slate/50 active:bg-brand-slate font-bold transition-colors">
-                              <Minus size={16} strokeWidth={3} />
-                            </button>
-                            <span className="w-6 text-center font-black text-brand-black text-[15px]">{item.quantity}</span>
-                            <button onClick={() => incrementQuantity(item.cartId)} className="w-9 h-full flex items-center justify-center text-brand-black hover:bg-brand-slate/50 active:bg-brand-slate font-bold transition-colors">
-                              <Plus size={16} strokeWidth={3} />
-                            </button>
-                          </div>
+                          </span>
+                          <span className="font-bold text-brand-black">₹{deliveryFee}</span>
                         </div>
-                      ))}
-                    </div>
 
-                    {/* Bill Summary */}
-                    <div className="bg-white p-6 rounded-3xl border border-brand-slate/60 shadow-sm mb-6 relative overflow-hidden">
-                      <div className="absolute top-0 left-0 w-full h-1 bg-brand-red"></div>
-                      <h3 className="font-black text-brand-black mb-5 tracking-widest text-xs uppercase text-brand-slate-500">Bill Summary</h3>
-
-                      <div className="flex justify-between text-gray-600 mb-3 font-medium text-[15px]">
-                        <span>Subtotal</span>
-                        <span className="font-bold text-brand-black">₹{cartTotalAmount}</span>
-                      </div>
-                      <div className="flex justify-between text-gray-600 mb-4 font-medium text-[15px]">
-                        <span className="flex items-center gap-2">
-                          Delivery Fee
-                          {deliveryFee === 0 ? (
-                            <span className="bg-green-100 text-green-700 text-[10px] px-2.5 py-1 rounded-full uppercase font-bold tracking-wide">Free</span>
-                          ) : (
-                            <span className="text-[11px] text-gray-500 bg-brand-slate/50 px-2 py-1 rounded-lg font-semibold">(Under ₹500)</span>
-                          )}
-                        </span>
-                        <span className="font-bold text-brand-black">₹{deliveryFee}</span>
-                      </div>
-
-                      {deliveryFee > 0 && (
-                        <div className="bg-brand-yellow/10 border border-brand-yellow/30 p-3 rounded-xl mb-5 text-[13px] font-medium flex gap-2.5 text-brand-black">
-                          <Info size={16} className="text-brand-yellow shrink-0 mt-0.5" />
-                          <p>Add items worth ₹{500 - cartTotalAmount} more to get <span className="font-black text-brand-yellow">FREE Delivery!</span></p>
-                        </div>
-                      )}
-
-                      <div className="border-t border-brand-slate/60 pt-4 flex justify-between font-black text-2xl text-brand-black mt-2">
-                        <span>Grand Total</span>
-                        <span className="text-brand-red">₹{finalPayable}</span>
-                      </div>
-                    </div>
-
-                    {/* Checkout Actions */}
-                    <div className="space-y-4 pb-safe">
-                      <div className="bg-white p-4 rounded-2xl border border-brand-slate/60 shadow-sm relative overflow-hidden">
-                        <div className="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
-                        <h3 className="block text-brand-slate-500 font-bold text-xs uppercase tracking-widest mb-3 ml-1">Delivery Address *</h3>
-                        
-                        {gpsLocation ? (
-                          <div className="space-y-3">
-                            <div className="bg-green-50 border border-green-200 text-green-700 px-3 py-2 rounded-xl text-[13px] font-bold flex items-center gap-2">
-                              <MapPin size={16} /> Location Captured!
-                            </div>
-                            <input
-                              type="text"
-                              placeholder="House / Flat / Floor No. *"
-                              value={houseNo}
-                              onChange={(e) => setHouseNo(e.target.value)}
-                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
-                            />
-                            <input
-                              type="text"
-                              placeholder="Building / Area / Landmark *"
-                              value={buildingName}
-                              onChange={(e) => setBuildingName(e.target.value)}
-                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
-                            />
-                            <button onClick={() => setGpsLocation(null)} className="text-[12px] text-brand-red font-bold underline px-1 hover:text-red-700">Clear Location & Type Manually</button>
-                          </div>
-                        ) : (
-                          <div className="space-y-3">
-                            <button 
-                              onClick={requestLocation}
-                              disabled={isLocating}
-                              className="w-full bg-brand-light border-2 border-brand-red text-brand-red hover:bg-brand-red hover:text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 transition-colors duration-300"
-                            >
-                              <MapPin size={18} />
-                              {isLocating ? "Fetching Location..." : "Share Current Location"}
-                            </button>
-                            
-                            {locationError && <p className="text-red-500 text-[11px] px-1 font-semibold">{locationError}</p>}
-                            
-                            <div className="flex items-center gap-2 my-2">
-                              <div className="h-px bg-brand-slate/60 flex-1"></div>
-                              <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">OR</span>
-                              <div className="h-px bg-brand-slate/60 flex-1"></div>
-                            </div>
-
-                            <textarea
-                              id="address"
-                              rows="3"
-                              placeholder="Type your complete address manually..."
-                              value={manualAddress}
-                              onChange={(e) => setManualAddress(e.target.value)}
-                              className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all resize-none font-medium placeholder:text-gray-400"
-                            ></textarea>
+                        {deliveryFee > 0 && (
+                          <div className="bg-brand-yellow/10 border border-brand-yellow/30 p-3 rounded-xl mb-5 text-[13px] font-medium flex gap-2.5 text-brand-black">
+                            <Info size={16} className="text-brand-yellow shrink-0 mt-0.5" />
+                            <p>Add items worth ₹{500 - cartTotalAmount} more to get <span className="font-black text-brand-yellow">FREE Delivery!</span></p>
                           </div>
                         )}
+
+                        <div className="border-t border-brand-slate/60 pt-4 flex justify-between font-black text-2xl text-brand-black mt-2">
+                          <span>Grand Total</span>
+                          <span className="text-brand-red">₹{finalPayable}</span>
+                        </div>
                       </div>
 
+                      {/* Checkout Actions */}
+                      <div className="space-y-4 pb-safe">
+                        <div className="bg-white p-4 rounded-2xl border border-brand-slate/60 shadow-sm relative overflow-hidden">
+                          <div className="absolute top-0 left-0 w-1 h-full bg-brand-yellow"></div>
+                          <h3 className="block text-brand-slate-500 font-bold text-xs uppercase tracking-widest mb-3 ml-1">Delivery Address *</h3>
+                          
+                          {gpsLocation ? (
+                            <div className="space-y-3">
+                              <div className="bg-green-50 border border-green-200 text-green-700 px-3 py-2 rounded-xl text-[13px] font-bold flex items-center gap-2">
+                                <MapPin size={16} /> Location Captured!
+                              </div>
+                              <input
+                                type="text"
+                                placeholder="House / Flat / Floor No. *"
+                                value={houseNo}
+                                onChange={(e) => setHouseNo(e.target.value)}
+                                className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
+                              />
+                              <input
+                                type="text"
+                                placeholder="Building / Area / Landmark *"
+                                value={buildingName}
+                                onChange={(e) => setBuildingName(e.target.value)}
+                                className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all font-medium placeholder:text-gray-400"
+                              />
+                              <button onClick={() => setGpsLocation(null)} className="text-[12px] text-brand-red font-bold underline px-1 hover:text-red-700">Clear Location & Type Manually</button>
+                            </div>
+                          ) : (
+                            <div className="space-y-3">
+                              <button 
+                                onClick={requestLocation}
+                                disabled={isLocating}
+                                className="w-full bg-brand-light border-2 border-brand-red text-brand-red hover:bg-brand-red hover:text-white py-3 rounded-xl font-bold flex justify-center items-center gap-2 transition-colors duration-300"
+                              >
+                                <MapPin size={18} />
+                                {isLocating ? "Fetching Location..." : "Share Current Location"}
+                              </button>
+                              
+                              {locationError && <p className="text-red-500 text-[11px] px-1 font-semibold">{locationError}</p>}
+                              
+                              <div className="flex items-center gap-2 my-2">
+                                <div className="h-px bg-brand-slate/60 flex-1"></div>
+                                <span className="text-[11px] text-gray-400 font-bold uppercase tracking-wider">OR</span>
+                                <div className="h-px bg-brand-slate/60 flex-1"></div>
+                              </div>
+                              
+                              <p className="text-[11px] text-brand-red font-bold uppercase tracking-widest text-center mt-1 mb-1 bg-red-50 py-1 rounded-md border border-red-100">
+                                Note: We only deliver up to 15km
+                              </p>
+
+                              <textarea
+                                id="address"
+                                rows="3"
+                                placeholder="Type your complete address manually..."
+                                value={manualAddress}
+                                onChange={(e) => setManualAddress(e.target.value)}
+                                className="w-full bg-brand-light border border-brand-slate/80 rounded-xl px-4 py-3 text-[14px] text-brand-black focus:outline-none focus:ring-2 focus:ring-brand-yellow focus:border-brand-yellow transition-all resize-none font-medium placeholder:text-gray-400"
+                              ></textarea>
+                            </div>
+                          )}
+                        </div>
+
+                        <button 
+                          onClick={() => setCheckoutStep(2)}
+                          disabled={!isAddressValid}
+                          className={`w-full text-white py-4 rounded-2xl font-black flex items-center justify-center space-x-3 transition-all ${
+                            isAddressValid
+                              ? 'bg-brand-black hover:bg-gray-800 shadow-[0_10px_20px_-10px_rgba(26,26,29,0.5)] hover:scale-[1.02] cursor-pointer' 
+                              : 'bg-gray-300 cursor-not-allowed opacity-70'
+                          }`}
+                        >
+                          <CreditCard size={24} fill="currentColor" className="text-white" />
+                          <span className="text-[17px] tracking-wide">Proceed to Payment</span>
+                        </button>
+                      </div>
+                    </>
+                  )
+                ) : (
+                  /* Step 2: Payment Screen */
+                  <div className="flex flex-col h-full animate-in fade-in slide-in-from-bottom-4 duration-300">
+                    <button onClick={() => setCheckoutStep(1)} className="flex items-center text-brand-slate-500 font-bold mb-6 hover:text-brand-black transition-colors w-max">
+                      <ArrowLeft size={18} className="mr-1" /> Back to Cart
+                    </button>
+                    
+                    <div className="bg-white p-6 rounded-3xl border border-brand-slate/60 shadow-sm mb-6 text-center">
+                      <div className="w-16 h-16 bg-brand-yellow/20 rounded-full flex items-center justify-center mx-auto mb-4 text-brand-yellow">
+                        <CreditCard size={32} />
+                      </div>
+                      <h3 className="font-black text-4xl text-brand-black mb-1">₹{finalPayable}</h3>
+                      <p className="text-gray-500 font-medium text-[14px] mb-8">Complete your payment to place the order.</p>
+                      
                       <button 
-                        onClick={placeOrder}
-                        disabled={!isAddressValid}
-                        className={`w-full text-white py-4 rounded-2xl font-black flex items-center justify-center space-x-3 transition-all ${
-                          isAddressValid
-                            ? 'bg-[#25D366] hover:bg-[#128C7E] shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)] hover:scale-[1.02] cursor-pointer' 
-                            : 'bg-gray-300 cursor-not-allowed opacity-70'
-                        }`}
+                        onClick={goToUPI}
+                        className="w-full bg-brand-light border-2 border-brand-slate text-brand-black hover:bg-white py-4 rounded-2xl font-black flex items-center justify-center space-x-2 transition-colors mb-6 shadow-sm hover:scale-[1.02] active:scale-[0.98]"
                       >
-                        <MessageCircle size={24} fill="currentColor" className="text-white" />
-                        <span className="text-[17px] tracking-wide">Order on WhatsApp</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" className="h-[22px]" />
+                        <span className="text-[16px] tracking-wide ml-1">Pay via UPI App</span>
                       </button>
 
-                      <button
-                        onClick={goToUPI}
-                        className="w-full bg-white border-2 border-brand-slate text-brand-black hover:bg-brand-light py-3.5 rounded-2xl font-bold flex items-center justify-center space-x-2 transition-colors"
+                      <div className="text-[11px] font-black text-gray-400 uppercase tracking-widest mb-3">OR COPY UPI ID</div>
+                      <div className="bg-brand-slate/30 p-3.5 rounded-xl font-mono text-brand-black font-bold flex justify-center items-center gap-2 text-[15px]">
+                        {UPI_ID}
+                      </div>
+                    </div>
+
+                    <div className="mt-auto pt-2 space-y-3">
+                      <p className="text-center text-[13px] text-gray-500 font-medium px-4 mb-4 leading-relaxed">
+                        After paying, click below to confirm your payment with us on WhatsApp.
+                      </p>
+                      <button 
+                        onClick={placeOrder}
+                        className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white py-4.5 rounded-2xl font-black flex items-center justify-center space-x-3 transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_20px_-10px_rgba(37,211,102,0.5)]"
                       >
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg" alt="UPI" className="h-5" />
-                        <span className="text-[15px]">Pay via UPI (Optional)</span>
+                        <MessageCircle size={26} fill="currentColor" className="text-white" />
+                        <span className="text-[18px] tracking-wide">I Have Paid - Send Order</span>
                       </button>
                     </div>
-                  </>
+                  </div>
                 )}
               </div>
             </motion.div>
