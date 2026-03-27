@@ -135,9 +135,8 @@ export default function App() {
       message += `${manualAddress}\n`;
     }
     message += `--------------------------\n`;
-    message += `Click here to pay via UPI:\n`;
-    message += `upi://pay?pa=${UPI_ID}&pn=Baap%20of%20Rolls&am=${finalPayable}&cu=INR\n`;
-    message += `\nOr pay to this UPI ID: ${UPI_ID}\n`;
+    message += `Payment Status: ✅ PAID VIA UPI (Unverified)\n`;
+    message += `Action Required: Please check your UPI history to confirm receipt of ₹${finalPayable} from this customer.\n`;
     
     return encodeURIComponent(message);
   };
