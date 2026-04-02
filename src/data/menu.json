@@ -3,109 +3,96 @@
     {
       "id": "classic-veg-rolls",
       "name": "Classic Veg Rolls",
+      "type": "veg",
       "items": [
         {
-          "id": "ar-0",
+          "id": "cvr-1",
           "name": "Aaloo Roll",
+          "description": "Crispy spiced potato filling wrapped in a soft, fresh paratha.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 49
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 69
-            }
+            { "name": "Beta (Single)", "price": 49 },
+            { "name": "Baap (Double)", "price": 69 }
           ],
           "image": "/images/aaloo-roll.jpg"
         },
         {
-          "id": "vr-1",
+          "id": "cvr-2",
           "name": "Veggie Roll",
+          "description": "Fresh seasonal vegetables tossed in house spices, rolled to perfection.",
+          "rating": 4.3,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 79
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 109
-            }
+            { "name": "Beta (Single)", "price": 79 },
+            { "name": "Baap (Double)", "price": 109 }
           ],
           "image": "/images/veggie-roll.jpg"
         },
         {
-          "id": "vkr-2",
+          "id": "cvr-3",
           "name": "Veggie Korma Roll",
+          "description": "Rich, creamy korma sauce with tender vegetables in a butter paratha.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 99
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 129
-            }
+            { "name": "Beta (Single)", "price": 99 },
+            { "name": "Baap (Double)", "price": 129 }
           ],
           "image": "/images/veggie-korma-roll.jpg"
         },
         {
-          "id": "mcr-3",
+          "id": "cvr-4",
           "name": "Masala Corn Roll",
+          "description": "Sweet corn kernels with tangy chaat masala and fresh herbs.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 99
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 129
-            }
+            { "name": "Beta (Single)", "price": 99 },
+            { "name": "Baap (Double)", "price": 129 }
           ],
           "image": "/images/masala-corn-roll.jpg"
         },
         {
-          "id": "jcr-4",
+          "id": "cvr-5",
           "name": "Jalapeno Corn Roll",
+          "description": "Fiery jalapeños with sweet corn for a bold kick of spice and flavour.",
+          "rating": 4.3,
+          "isSpicy": true,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 109
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 139
-            }
+            { "name": "Beta (Single)", "price": 109 },
+            { "name": "Baap (Double)", "price": 139 }
           ],
           "image": "/images/jalapeno-corn-roll.jpg"
         },
         {
-          "id": "hbkr-5",
+          "id": "cvr-6",
           "name": "Hara Bhara Kebab Roll",
+          "description": "Green spinach & peas kebab with mint chutney in a golden paratha.",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 159
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 189
-            }
+            { "name": "Beta (Single)", "price": 159 },
+            { "name": "Baap (Double)", "price": 189 }
           ],
           "image": "/images/hara-bhara-kebab-roll.jpg"
         },
         {
-          "id": "vskr-6",
+          "id": "cvr-7",
           "name": "Veg Seekh Kebab Roll",
+          "description": "Smoky veg seekh kebab chargrilled to perfection, wrapped with onions.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 179
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 209
-            }
+            { "name": "Beta (Single)", "price": 179 },
+            { "name": "Baap (Double)", "price": 209 }
           ],
           "image": "/images/veg-seekh-kebab-roll.jpg"
         }
@@ -114,124 +101,109 @@
     {
       "id": "soya-veg-rolls",
       "name": "Soya Veg Rolls",
+      "type": "veg",
       "items": [
         {
-          "id": "mscr-0",
+          "id": "soya-1",
           "name": "Masala Soya Chaap Roll",
+          "description": "Juicy soya chaap marinated in bold masala, grilled and rolled.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 139
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 169
-            }
+            { "name": "Beta (Single)", "price": 139 },
+            { "name": "Baap (Double)", "price": 169 }
           ],
           "image": "/images/masala-soya-chaap-roll.jpg"
         },
         {
-          "id": "tscr-1",
+          "id": "soya-2",
           "name": "Tandoori Soya Chaap Roll",
+          "description": "Soya chaap slow-roasted in a clay oven with tandoori spices.",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 149
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 179
-            }
+            { "name": "Beta (Single)", "price": 149 },
+            { "name": "Baap (Double)", "price": 179 }
           ],
           "image": "/images/tandoori-soya-chaap-roll.jpg"
         },
         {
-          "id": "ascr-2",
+          "id": "soya-3",
           "name": "Achari Soya Chaap Roll",
+          "description": "Tangy pickle-style marinade gives this soya chaap a punchy flavour.",
+          "rating": 4.3,
+          "isSpicy": true,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 149
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 179
-            }
+            { "name": "Beta (Single)", "price": 149 },
+            { "name": "Baap (Double)", "price": 179 }
           ],
           "image": "/images/achari-soya-chaap-roll.jpg"
         },
         {
-          "id": "kscr-3",
+          "id": "soya-4",
           "name": "Korma Soya Chaap Roll",
+          "description": "Soya chaap in a lush, aromatic korma gravy — mildly spiced and rich.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 149
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 179
-            }
+            { "name": "Beta (Single)", "price": 149 },
+            { "name": "Baap (Double)", "price": 179 }
           ],
           "image": "/images/korma-soya-chaap-roll.jpg"
         },
         {
-          "id": "mscr-4",
+          "id": "soya-5",
           "name": "Malai Soya Chaap Roll",
+          "description": "Creamy malai coating on soya chaap with a hint of cardamom.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 149
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 179
-            }
+            { "name": "Beta (Single)", "price": 149 },
+            { "name": "Baap (Double)", "price": 179 }
           ],
           "image": "/images/malai-soya-chaap-roll.jpg"
         },
         {
-          "id": "mscr-5",
+          "id": "soya-6",
           "name": "Makhani Soya Chaap Roll",
+          "description": "Soya chaap dunked in buttery makhani sauce, smooth and indulgent.",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 149
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 179
-            }
+            { "name": "Beta (Single)", "price": 149 },
+            { "name": "Baap (Double)", "price": 179 }
           ],
           "image": "/images/makhani-soya-chaap-roll.jpg"
         },
         {
-          "id": "bscr-6",
+          "id": "soya-7",
           "name": "Butter Soya Chaap Roll",
+          "description": "Soya chaap coated in Amul butter for a rich, golden finish.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 149
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 179
-            }
+            { "name": "Beta (Single)", "price": 149 },
+            { "name": "Baap (Double)", "price": 179 }
           ],
           "image": "/images/butter-soya-chaap-roll.jpg"
         },
         {
-          "id": "ascr-7",
+          "id": "soya-8",
           "name": "Afghani Soya Chaap Roll",
+          "description": "Yoghurt-marinated soya chaap with mild Afghani spices and fresh onion.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 149
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 179
-            }
+            { "name": "Beta (Single)", "price": 149 },
+            { "name": "Baap (Double)", "price": 179 }
           ],
           "image": "/images/afghani-soya-chaap-roll.jpg"
         }
@@ -240,184 +212,161 @@
     {
       "id": "paneer-veg-rolls",
       "name": "Paneer Veg Rolls",
+      "type": "veg",
       "items": [
         {
-          "id": "pr-0",
+          "id": "pan-1",
           "name": "Paneer Roll",
+          "description": "Soft cottage cheese cubes with onion and mint chutney in a fresh paratha.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 169
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 209
-            }
+            { "name": "Beta (Single)", "price": 169 },
+            { "name": "Baap (Double)", "price": 209 }
           ],
           "image": "/images/paneer-roll.jpg"
         },
         {
-          "id": "pbr-1",
+          "id": "pan-2",
           "name": "Paneer Bhurji Roll",
+          "description": "Scramble-style spiced paneer with peppers wrapped in a soft paratha.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 179
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 219
-            }
+            { "name": "Beta (Single)", "price": 179 },
+            { "name": "Baap (Double)", "price": 219 }
           ],
           "image": "/images/paneer-bhurji-roll.jpg"
         },
         {
-          "id": "tpr-2",
+          "id": "pan-3",
           "name": "Tandoori Paneer Roll",
+          "description": "Paneer tikka chargrilled in a tandoor with smoky spices and fresh salad.",
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/tandoori-paneer-roll.jpg"
         },
         {
-          "id": "mpr-3",
+          "id": "pan-4",
           "name": "Malai Paneer Roll",
+          "description": "Melt-in-your-mouth malai paneer with cashew cream and rose water.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/malai-paneer-roll.jpg"
         },
         {
-          "id": "apr-4",
+          "id": "pan-5",
           "name": "Achari Paneer Roll",
+          "description": "Paneer marinated in a tangy pickle blend for a zingy burst of flavour.",
+          "rating": 4.3,
+          "isSpicy": true,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/achari-paneer-roll.jpg"
         },
         {
-          "id": "mpr-5",
+          "id": "pan-6",
           "name": "Makhani Paneer Roll",
+          "description": "Paneer smothered in smooth, buttery makhani sauce — a crowd favourite.",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/makhani-paneer-roll.jpg"
         },
         {
-          "id": "apr-6",
+          "id": "pan-7",
           "name": "Afghani Paneer Roll",
+          "description": "Cottage cheese in a silky yoghurt-cream marinade with mild Afghani spices.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/afghani-paneer-roll.jpg"
         },
         {
-          "id": "kpr-7",
+          "id": "pan-8",
           "name": "Korma Paneer Roll",
+          "description": "Paneer enveloped in aromatic korma gravy, rich with whole spices.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/korma-paneer-roll.jpg"
         },
         {
-          "id": "bpr-8",
+          "id": "pan-9",
           "name": "Butter Paneer Roll",
+          "description": "Classic butter paneer filling in a flaky paratha — comfort in every bite.",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/butter-paneer-roll.jpg"
         },
         {
-          "id": "spr-9",
+          "id": "pan-10",
           "name": "Schezwan Paneer Roll",
+          "description": "Paneer tossed in fiery schezwan sauce with peppers and spring onion.",
+          "rating": 4.4,
+          "isSpicy": true,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/schezwan-paneer-roll.jpg"
         },
         {
-          "id": "psr-10",
+          "id": "pan-11",
           "name": "Paneer Shawarma Roll",
+          "description": "Middle-Eastern style shawarma spiced paneer with garlic mayo and pickles.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg", "new"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/paneer-shawarma-roll.jpg"
         },
         {
-          "id": "cgpr-11",
+          "id": "pan-12",
           "name": "Chilly Garlic Paneer Roll",
+          "description": "Bold chilli garlic sauce with paneer and fresh spring onion.",
+          "rating": 4.5,
+          "isSpicy": true,
+          "tags": ["veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 199
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 239
-            }
+            { "name": "Beta (Single)", "price": 199 },
+            { "name": "Baap (Double)", "price": 239 }
           ],
           "image": "/images/chilly-garlic-paneer-roll.jpg"
         }
@@ -426,214 +375,187 @@
     {
       "id": "non-veg-rolls",
       "name": "Non-Veg Rolls",
+      "type": "non-veg",
       "items": [
         {
-          "id": "ccr-0",
+          "id": "nv-1",
           "name": "Classic Chicken Roll",
+          "description": "Juicy chicken strips with caramelised onions and mint chutney.",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 169
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 209
-            }
+            { "name": "Beta (Single)", "price": 169 },
+            { "name": "Baap (Double)", "price": 209 }
           ],
           "image": "/images/classic-chicken-roll.jpg"
         },
         {
-          "id": "csr-1",
+          "id": "nv-2",
           "name": "Chicken Shawarma Roll",
+          "description": "Levantine-spiced chicken with garlic sauce and fresh veggies.",
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 179
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 219
-            }
+            { "name": "Beta (Single)", "price": 179 },
+            { "name": "Baap (Double)", "price": 219 }
           ],
           "image": "/images/chicken-shawarma-roll.jpg"
         },
         {
-          "id": "bcr-2",
+          "id": "nv-3",
           "name": "Bhuna Chicken Roll",
+          "description": "Slow-cooked bhuna chicken with rich, dark spices — deeply flavourful.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 179
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 219
-            }
+            { "name": "Beta (Single)", "price": 179 },
+            { "name": "Baap (Double)", "price": 219 }
           ],
           "image": "/images/bhuna-chicken-roll.jpg"
         },
         {
-          "id": "ctr-3",
+          "id": "nv-4",
           "name": "Chicken Tandoori Roll",
+          "description": "Tender chicken tikka grilled in a clay oven with house spice blend.",
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/chicken-tandoori-roll.jpg"
         },
         {
-          "id": "ckr-4",
+          "id": "nv-5",
           "name": "Chicken Korma Roll",
+          "description": "Chicken in a fragrant, creamy korma with whole spices and saffron.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/chicken-korma-roll.jpg"
         },
         {
-          "id": "mcr-5",
+          "id": "nv-6",
           "name": "Malai Chicken Roll",
+          "description": "Silky malai-marinated chicken with cashew paste and mild spices.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/malai-chicken-roll.jpg"
         },
         {
-          "id": "acr-6",
+          "id": "nv-7",
           "name": "Achari Chicken Roll",
+          "description": "Chicken marinated in a tangy pickle masala for a zingy, bold taste.",
+          "rating": 4.3,
+          "isSpicy": true,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/achari-chicken-roll.jpg"
         },
         {
-          "id": "mcr-7",
+          "id": "nv-8",
           "name": "Makhani Chicken Roll",
+          "description": "Classic butter chicken sauce wrapped with juicy chicken in a soft roll.",
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/makhani-chicken-roll.jpg"
         },
         {
-          "id": "acr-8",
+          "id": "nv-9",
           "name": "Afghani Chicken Roll",
+          "description": "Yoghurt-cream marinated chicken with cardamom and Afghani spices.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 199
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 239
-            }
+            { "name": "Beta (Single)", "price": 199 },
+            { "name": "Baap (Double)", "price": 239 }
           ],
           "image": "/images/afghani-chicken-roll.jpg"
         },
         {
-          "id": "bcr-9",
+          "id": "nv-10",
           "name": "Butter Chicken Roll",
+          "description": "Comfort food at its best — butter chicken filling in a flaky paratha.",
+          "rating": 4.8,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 199
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 239
-            }
+            { "name": "Beta (Single)", "price": 199 },
+            { "name": "Baap (Double)", "price": 239 }
           ],
           "image": "/images/butter-chicken-roll.jpg"
         },
         {
-          "id": "scr-10",
+          "id": "nv-11",
           "name": "Schezwan Chicken Roll",
+          "description": "Wok-tossed chicken in fiery schezwan sauce with peppers and onion.",
+          "rating": 4.4,
+          "isSpicy": true,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/schezwan-chicken-roll.jpg"
         },
         {
-          "id": "cgcr-11",
+          "id": "nv-12",
           "name": "Chilli Garlic Chicken Roll",
+          "description": "Punchy chilli garlic chicken with a crispy edge and fresh herbs.",
+          "rating": 4.5,
+          "isSpicy": true,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 199
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 239
-            }
+            { "name": "Beta (Single)", "price": 199 },
+            { "name": "Baap (Double)", "price": 239 }
           ],
           "image": "/images/chilli-garlic-chicken-roll.jpg"
         },
         {
-          "id": "csr-12",
+          "id": "nv-13",
           "name": "Chicken Seekh Roll",
+          "description": "Minced chicken seekh kebab with onion rings and house chutney.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["non-veg"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 159
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 199
-            }
+            { "name": "Beta (Single)", "price": 159 },
+            { "name": "Baap (Double)", "price": 199 }
           ],
           "image": "/images/chicken-seekh-roll.jpg"
         },
         {
-          "id": "msr-13",
+          "id": "nv-14",
           "name": "Mutton Seekh Roll",
+          "description": "Premium minced mutton seekh with aromatic spices and pickled onions.",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Single)",
-              "price": 189
-            },
-            {
-              "name": "Baap (Double)",
-              "price": 229
-            }
+            { "name": "Beta (Single)", "price": 189 },
+            { "name": "Baap (Double)", "price": 229 }
           ],
           "image": "/images/mutton-seekh-roll.jpg"
         }
@@ -642,19 +564,26 @@
     {
       "id": "special-shawarma-rolls",
       "name": "Special Shawarma Rolls",
+      "type": "non-veg",
       "items": [
         {
           "id": "ssr-1",
           "name": "Doner Chicken Shawarma",
+          "description": "Authentic Doner-style chicken with garlic sauce, pickles and fresh veggies.",
           "price": 149,
-          "description": "NEW!!",
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["non-veg", "new"],
           "image": "/images/doner-chicken-shawarma.jpg"
         },
         {
           "id": "ssr-2",
           "name": "Doner Paneer Shawarma",
+          "description": "Middle-Eastern Doner-style paneer with herbed yoghurt and pickles.",
           "price": 129,
-          "description": "NEW!!",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg", "new"],
           "image": "/images/doner-paneer-shawarma.jpg"
         }
       ]
@@ -662,34 +591,31 @@
     {
       "id": "egg-rolls",
       "name": "Egg Rolls",
+      "type": "egg",
       "items": [
         {
           "id": "er-1",
           "name": "Egg Roll",
+          "description": "Fresh egg omelette rolled with onions, coriander and mint chutney.",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["egg", "bestseller"],
           "variations": [
-            {
-              "name": "Beta (Double Egg)",
-              "price": 69
-            },
-            {
-              "name": "Baap (Triple Egg)",
-              "price": 89
-            }
+            { "name": "Beta (Double Egg)", "price": 69 },
+            { "name": "Baap (Triple Egg)", "price": 89 }
           ],
           "image": "/images/egg-roll.jpg"
         },
         {
           "id": "er-2",
           "name": "Egg Makhani Roll",
+          "description": "Eggs dunked in creamy makhani sauce — a rich, indulgent treat.",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["egg"],
           "variations": [
-            {
-              "name": "Beta (Double Egg)",
-              "price": 89
-            },
-            {
-              "name": "Baap (Triple Egg)",
-              "price": 109
-            }
+            { "name": "Beta (Double Egg)", "price": 89 },
+            { "name": "Baap (Triple Egg)", "price": 109 }
           ],
           "image": "/images/egg-makhani-roll.jpg"
         }
@@ -698,33 +624,46 @@
     {
       "id": "momos",
       "name": "Momos (Classic Steam)",
+      "type": "veg",
       "items": [
         {
           "id": "m-1",
           "name": "Veg Momo (6 pcs)",
+          "description": "Steamed veggie dumplings stuffed with cabbage, carrot and spices.",
           "price": 79,
-          "description": "Classic Steam",
+          "rating": 4.3,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/veg-momo-6-pcs.jpg"
         },
         {
           "id": "m-2",
           "name": "Soya Veg Momo (6 pcs)",
+          "description": "Steamed dumplings packed with spiced soya chaap filling.",
           "price": 89,
-          "description": "Classic Steam",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/soya-veg-momo-6-pcs.jpg"
         },
         {
           "id": "m-3",
           "name": "Paneer Momo (6 pcs)",
+          "description": "Premium paneer stuffed dumplings with aromatic herb filling.",
           "price": 119,
-          "description": "Classic Steam",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/paneer-momo-6-pcs.jpg"
         },
         {
           "id": "m-4",
           "name": "Chicken Momo (6 pcs)",
+          "description": "Juicy minced chicken dumplings with ginger, garlic and coriander.",
           "price": 119,
-          "description": "Classic Steam",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "image": "/images/chicken-momo-6-pcs.jpg"
         }
       ]
@@ -732,26 +671,36 @@
     {
       "id": "fries",
       "name": "Fries",
+      "type": "veg",
       "items": [
         {
           "id": "f-1",
           "name": "Classic Fries",
+          "description": "Golden crispy fries seasoned with salt and a hint of pepper.",
           "price": 89,
-          "description": "",
+          "rating": 4.3,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/classic-fries.jpg"
         },
         {
           "id": "f-2",
           "name": "Peri Peri Fries",
+          "description": "Crispy fries dusted with our signature fiery peri peri masala.",
           "price": 99,
-          "description": "",
+          "rating": 4.5,
+          "isSpicy": true,
+          "tags": ["veg", "bestseller"],
           "image": "/images/peri-peri-fries.jpg"
         },
         {
           "id": "f-3",
           "name": "Herby Potato Wedges",
+          "description": "Thick-cut potato wedges seasoned with rosemary, garlic and herbs.",
           "price": 99,
-          "description": "",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/herby-potato-wedges.jpg"
         }
       ]
@@ -759,26 +708,36 @@
     {
       "id": "biryani",
       "name": "Biryani",
+      "type": "veg",
       "items": [
         {
           "id": "b-1",
           "name": "Veg Biryani (450gm)",
+          "description": "Fragrant basmati rice layered with spiced vegetables and saffron.",
           "price": 239,
-          "description": "",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/veg-biryani-450gm.jpg"
         },
         {
           "id": "b-2",
           "name": "Chaap Biryani (450gm)",
+          "description": "Aromatic biryani with tender soya chaap pieces and whole spices.",
           "price": 249,
-          "description": "",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg", "bestseller"],
           "image": "/images/chaap-biryani-450gm.jpg"
         },
         {
           "id": "b-3",
           "name": "Chicken Biryani (480gm)",
+          "description": "Classic dum-cooked chicken biryani with caramelised onions and raita.",
           "price": 259,
-          "description": "",
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["non-veg", "bestseller"],
           "image": "/images/chicken-biryani-480gm.jpg"
         }
       ]
@@ -786,19 +745,26 @@
     {
       "id": "desserts",
       "name": "Desserts",
+      "type": "veg",
       "items": [
         {
           "id": "d-1",
           "name": "Choco Lava Cake",
+          "description": "Warm chocolate cake with a gooey molten centre — pure indulgence.",
           "price": 99,
-          "description": "",
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/choco-lava-cake.jpg"
         },
         {
           "id": "d-2",
           "name": "Classic Nut Brownie",
+          "description": "Fudgy dark chocolate brownie loaded with roasted walnuts and pecans.",
           "price": 99,
-          "description": "",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/classic-nut-brownie.jpg"
         }
       ]
@@ -806,68 +772,96 @@
     {
       "id": "beverages",
       "name": "Beverages",
+      "type": "veg",
       "items": [
         {
           "id": "bev-1",
           "name": "Aam Panna",
+          "description": "Traditional raw mango cooler with cumin and black salt. (300ml)",
           "price": 79,
-          "description": "",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/aam-panna.jpg"
         },
         {
           "id": "bev-2",
           "name": "Masala Lemonade",
+          "description": "Zesty lemonade with chaat masala and a pinch of chilli. (300ml)",
           "price": 79,
-          "description": "",
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/masala-lemonade.jpg"
         },
         {
           "id": "bev-3",
           "name": "Peach Iced Tea",
+          "description": "Refreshing brewed iced tea with sweet peach flavour. (350ml)",
           "price": 79,
-          "description": "",
+          "rating": 4.3,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/peach-iced-tea.jpg"
         },
         {
           "id": "bev-4",
           "name": "Lemon Iced Tea",
+          "description": "Classic brewed iced tea with a fresh lemon twist. (350ml)",
           "price": 79,
-          "description": "",
+          "rating": 4.3,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/lemon-iced-tea.jpg"
         },
         {
           "id": "bev-5",
           "name": "Pulse Candy Chatkara",
+          "description": "Our viral Pulse candy flavoured soda — tangy and addictive! (300ml)",
           "price": 79,
-          "description": "",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg", "new"],
           "image": "/images/pulse-candy-chatkara.jpg"
         },
         {
           "id": "bev-6",
           "name": "Spicy Chilli Guava",
+          "description": "Sweet guava juice with a fiery chilli kick — surprisingly refreshing. (300ml)",
           "price": 79,
-          "description": "",
+          "rating": 4.4,
+          "isSpicy": true,
+          "tags": ["veg"],
           "image": "/images/spicy-chilli-guava.jpg"
         },
         {
           "id": "bev-7",
           "name": "Classic Cold Coffee",
+          "description": "Rich blended cold coffee with milk and ice — a classic pick-me-up. (400ml)",
           "price": 99,
-          "description": "",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/classic-cold-coffee.jpg"
         },
         {
           "id": "bev-8",
           "name": "Mocha Cold Coffee",
+          "description": "Cold coffee infused with real chocolate for a mocha experience. (400ml)",
           "price": 109,
-          "description": "",
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/mocha-cold-coffee.jpg"
         },
         {
           "id": "bev-9",
           "name": "Hazelnut Cold Coffee",
+          "description": "Smooth cold coffee with a hint of toasted hazelnut. (400ml)",
           "price": 109,
-          "description": "",
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
           "image": "/images/hazelnut-cold-coffee.jpg"
         }
       ]
@@ -875,54 +869,87 @@
     {
       "id": "add-ons",
       "name": "Add-Ons & Dressings",
+      "type": "veg",
       "items": [
         {
           "id": "add-1",
           "name": "Extra Peri Peri Masala",
+          "description": "Extra spicy peri peri seasoning for that extra kick.",
           "price": 10,
-          "description": "Add-on"
+          "rating": 4.2,
+          "isSpicy": true,
+          "tags": ["veg"],
+          "image": null
         },
         {
           "id": "add-2",
           "name": "Amul Butter",
+          "description": "Pure Amul butter to enrich any roll or side.",
           "price": 10,
-          "description": "Add-on"
+          "rating": 4.5,
+          "isSpicy": false,
+          "tags": ["veg"],
+          "image": null
         },
         {
           "id": "add-3",
           "name": "Mint Chutney",
+          "description": "Fresh and cooling house-made mint and coriander chutney.",
           "price": 10,
-          "description": "Add-on"
+          "rating": 4.6,
+          "isSpicy": false,
+          "tags": ["veg"],
+          "image": null
         },
         {
           "id": "add-4",
           "name": "Wheat Paratha",
+          "description": "Wholesome whole-wheat paratha, freshly rolled and cooked.",
           "price": 29,
-          "description": "Add-on"
+          "rating": 4.3,
+          "isSpicy": false,
+          "tags": ["veg"],
+          "image": null
         },
         {
           "id": "add-5",
           "name": "Extra Egg",
+          "description": "An additional egg added to your roll — more protein, more flavour.",
           "price": 20,
-          "description": "Add-on"
+          "rating": 4.4,
+          "isSpicy": false,
+          "tags": ["egg"],
+          "image": null
         },
         {
           "id": "add-6",
           "name": "Tandoori Delight Dressing",
+          "description": "Smoky tandoori-flavoured dressing — the secret sauce of our rolls.",
           "price": 19,
-          "description": "Dressing"
+          "rating": 4.7,
+          "isSpicy": false,
+          "tags": ["veg"],
+          "image": null
         },
         {
           "id": "add-7",
           "name": "Mayonnaise",
+          "description": "Classic creamy mayonnaise for dipping or drizzling.",
           "price": 19,
-          "description": "Dressing"
+          "rating": 4.3,
+          "isSpicy": false,
+          "tags": ["veg"],
+          "image": null
         },
         {
           "id": "add-8",
           "name": "Jalapeno Mayonnaise",
+          "description": "Creamy mayo with pickled jalapeños for a spicy, tangy hit.",
           "price": 19,
-          "description": "Dressing"
+          "rating": 4.4,
+          "isSpicy": true,
+          "tags": ["veg"],
+          "image": null
         }
       ]
     }
